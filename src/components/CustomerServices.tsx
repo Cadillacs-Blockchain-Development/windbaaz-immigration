@@ -99,13 +99,13 @@ const CustomerServices = () => {
     ]
 
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto pb-10">
             <div className="text-center text-4xl font-medium text-[#333333]">
                 <h1 className="fm-raleway font-medium text-4xl text-[#333333] py-16">We provide the best services to our customers</h1>
 
-                <div className="grid grid-cols-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
                     {servicesData.map((service, index) => (
-                        <div key={index} className="flex flex-col items-start gap-5 p-5 border-b-2 border-white hover:border-black hover:border-b-2 text-[#333333]">
+                        <div key={index} className="flex flex-col items-start gap-5 px-0 py-5 sm:p-5 h-fit   text-[#333333] group">
                             {service.icon}
                             <h2 className="text-lg leading-none font-medium fm-raleway">{service.title}</h2>
                             <p className="text-sm text-[#333333] font-normal text-start fm-lato">{service.desc}</p>

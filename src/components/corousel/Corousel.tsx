@@ -1,24 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Carousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [direction, setDirection] = useState(null);  
+    const [animationClass, setAnimationClass] = useState(''); 
     const images = [
         'https://windmillimmigration.ca/wp-content/uploads/2022/09/135087-e1663633324529.jpg',
         'https://windmillimmigration.ca/wp-content/uploads/2022/07/Slide-2.jpg',
     ];
 
+    useEffect(() => {
+        if (direction === 'next') {
+            setAnimationClass('slide-in-left');
+        } else if (direction === 'prev') {
+            setAnimationClass('slide-in-right');
+        }
+    }, [currentIndex, direction]);
+
     const nextSlide = () => {
+        setDirection('next');
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     };
 
     const prevSlide = () => {
+        setDirection('prev');
         setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
     };
 
     return (
-        <div className="relative w-full h-[750px] overflow-hidden">
+        <div className="relative w-full h-[700px] overflow-hidden">
             <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-in-out"
+                className={
+                `absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-in-out
+                 ${setAnimationClass}
+                 `}
                 style={{ backgroundImage: `url(${images[currentIndex]})` }}
             >
 
