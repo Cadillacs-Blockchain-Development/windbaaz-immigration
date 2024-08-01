@@ -101,6 +101,7 @@ button:focus-visible {
     background-size: cover;
     background-position: left top;
     position: relative;
+    z-index: -1;
   }
   
   .wis-meeting-section:before {
@@ -114,7 +115,7 @@ button:focus-visible {
     bottom: 0;
     left: 0;
     opacity: 0.8;
-    z-index: 10;
+    z-index: -1;
   }
 
   .migration {
@@ -125,6 +126,7 @@ button:focus-visible {
   
 .group {
   position: relative;
+  z-index: -1;
 }
 
 .group::after {
@@ -139,6 +141,8 @@ button:focus-visible {
   transform: scaleY(0);
   transition: transform 0.3s ease;
   border-radius: 5px;
+  z-index: -1;
+
 }
 
 .group:hover::after {
@@ -165,59 +169,17 @@ button:focus-visible {
     border-radius: 5px;
   }
 }
-/* Keyframes for sliding left to right */
-@keyframes slideRight {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+
+.free-assessment-button {
+  background-color: #cc210a;
+  color: white;
+  font-size: 15px;
+  font-family: 'fm-lato', sans-serif;
+  text-align: center;
+  width: 100%;
+
 }
 
-/* Keyframes for sliding right to left */
-@keyframes slideLeft {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
+ 
 
-/* Keyframes for sliding out to left */
-@keyframes slideOutLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-/* Keyframes for sliding out to right */
-@keyframes slideOutRight {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* Animation classes */
-.slide-in-right {
-  animation: slideRight 1s ease-in-out forwards;
-}
-
-.slide-in-left {
-  animation: slideLeft 1s ease-in-out forwards;
-}
-
-.slide-out-left {
-  animation: slideOutLeft 1s ease-in-out forwards;
-}
-
-.slide-out-right {
-  animation: slideOutRight 1s ease-in-out forwards;
-}
+ 

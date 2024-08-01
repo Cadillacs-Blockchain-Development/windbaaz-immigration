@@ -41,11 +41,11 @@ const Immigration = () => {
           <p className="mt-4 fm-lato text-[16px] text-[rgb(51,51,51)] text-justify sm:text-start">
             In order to assist you in the most competent manner, we constantly monitor immigration laws and regulations and are abreast of any changes that might affect our clients’ business, employees, or individual applications. The constant monitoring helps us in possessing the information and capability that can make immigration application easier for our current as well as future clients, and ensure the best possible application result. Immigration procedures can be complicated, expensive and success can be tricky to achieve. However, with us taking care of all your immigration needs, we make it our mission to eradicate the usual stress and make it a hassle-free, smooth and enjoyable immigration experience for you.
           </p>
-          <p className="mt-4 text-[rgb(51,51,51)] flex justify-start items-start gap-2 ">
+          <p className="mt-4 text-[rgb(51,51,51)] flex justify-start items-start gap-2 cursur-pointer">
            <IoMdCheckmark className='md:size-[40px] lg:size-[28px] size-[60px]' />
-           <a href="https://college-ic.ca/protecting-the-public/find-an-immigration-consultant" className="text-black">
+           <a href="mailto:https://college-ic.ca/protecting-the-public/find-an-immigration-consultant" className="text-black">
            Authenticity can be confirmed from link: 
-           <strong className='text-[rgb(51,51,51)] fm-lato font-[700]'> https://college-ic.ca/protecting-the-public/find-an-immigration-consultant</strong>
+           <strong className='text-[rgb(51,51,51)] fm-lato font-[700] '> https://college-ic.ca/protecting-the-public/find-an-immigration-consultant</strong>
             </a>
            
           </p>

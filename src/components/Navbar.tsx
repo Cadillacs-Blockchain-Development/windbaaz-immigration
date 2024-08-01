@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdPhone } from "react-icons/md";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import OnHoverCards from "./cards/OnHoverCards";
+import MobileMenu from "./mobileMenu/MobileMenu";
 
 const Navbar = () => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
+ 
     const navLinks = [
         {
             title: "Immigrate",
@@ -80,17 +81,24 @@ const Navbar = () => {
             title: "Business",
             url: "#",
         },
+        {
+            title: "Free Assessment",
+            url: "https://windmillimmigration.ca/free-assessment/",
+            style:"assignmentBtn"
+        },
     ];
 
     return (
-        <div className="flex justify-between py-[20px] container mx-auto fm-lato text-sm text-[#333333] font-normal">
+        <div className="flex justify-between items-center  py-[20px] container mx-auto fm-lato text-sm text-[#333333] font-normal relative z-999 ">
             <div>
                 <img
                     src="https://windmillimmigration.ca/wp-content/uploads/2022/09/wis-logo-new.svg"
                     alt="Google Logo"
+                    className="w-[80%] sm:w-auto"
                 />
             </div>
-            <div>
+      
+             <div className=" hidden lg:block">
                 <div className="flex items-center justify-end space-x-2">
                     <span>Home</span>
                     <span className="mx-2">|</span>
@@ -105,13 +113,14 @@ const Navbar = () => {
                         {navLinks.map((link, index) => (
                             <li
                                 key={index}
-                                className="flex items-center relative"
+                                className={`flex items-center relative ${link.style?"bg-[#cc210a] text-white px-8 py-3 hover:opacity-75 transition-all cursor-pointer":""} `}
+                                
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}
                             >
                                 <a
                                     href={link.url}
-                                    className="text-[#333333] hover:text-[#cc210a] text-[15px] font-normal"
+                                    className={` hover:text-[#cc210a] text-[15px] font-normal ${link.style?"text-white hover:text-white":"text-[#333333]"}` }
                                     style={{ display: "flex", alignItems: "center" }}
                                 >
                                     {link.title}
@@ -135,9 +144,12 @@ const Navbar = () => {
                             </li>
                         ))}
                     </ul>
-                    {/* <PrimaryBtn title="Free Assessment" /> */}
+                     {/* <PrimaryBtn title="Free Assessment" />  */}
                 </div>
             </div>
+            <div className="block lg:hidden">
+                <MobileMenu />
+    </div>
         </div>
     );
 };

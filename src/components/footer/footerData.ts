@@ -7,17 +7,17 @@ export const footerData = {
     alt: "WIS Canada Logo"
   },
   socialLinks: [
-    { name: "facebook", url: "https://www.facebook.com", icon: FaFacebookF },
+    { name: "facebook", url: "https://www.facebook.com/people/Windmill-Immigration-Services/100088921004340/", icon: FaFacebookF },
     { name: "twitter", url: "https://www.twitter.com", icon: FaTwitter },
-    { name: "linkedin", url: "https://www.linkedin.com", icon: FaLinkedinIn },
-    { name: "instagram", url: "https://www.instagram.com", icon: FaInstagram },
+    { name: "linkedin", url: "https://www.linkedin.com/company/windmill-immigration-services-inc/", icon: FaLinkedinIn },
+    { name: "instagram", url: "https://www.instagram.com/windmill_immigration/", icon: FaInstagram },
     { name: "youtube", url: "https://www.youtube.com", icon: FaYoutube }
   ],
   copyright: "© 2022 All rights reserved  |  Windmill Immigration Services Inc.",
   companyLinks: [
-    { name: "Home", url: "/" },
-    { name: "Immigrate", url: "/immigrate" },
-    { name: "Contact Us", url: "/contact-us" }
+    { name: "Home", url: "https://windmillimmigration.ca/" },
+    { name: "Immigrate", url: "https://windmillimmigration.ca/immigrate/" },
+    { name: "Contact Us", url: "https://windmillimmigration.ca/contact-us/" }
   ],
   contactInfo: [
     { icon: MdLocationOn, text: "Dartmouth, Novascotia, Canada" },

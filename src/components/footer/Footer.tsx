@@ -27,7 +27,7 @@ const Footer = () => {
                 </li>
              ))}
            </ul>
-        <p className="text-[14px] mt-5  fm-lato font-[400]">{footerData.copyright}</p>
+        <p className="text-[14px] mt-5  fm-lato font-[400] cursor-pointer">{footerData.copyright}</p>
         </div>
 
         <div className="w-[100%] sm:w-[15%] lg:w-[20%] fontLoto">
@@ -47,7 +47,11 @@ const Footer = () => {
              {footerData.contactInfo.map((link,index) => (
                 <li key={index} className="text-[15px] flex fm-lato font-[400] items-center gap-2 mb-4">
                  <link.icon size={19} className="text-[#555555]" />
-                 <span className="tracking-lg" >{link.text}</span>
+                  {
+                    (link.text.includes('@'))? <a href={`mailto:${link.text}`}>{link.text}</a>:
+                    <span className="tracking-lg" >{link.text}</span>
+                  }
+                 
                 </li>
              ))}
             </ul>
