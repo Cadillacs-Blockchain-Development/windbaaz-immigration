@@ -1,8 +1,10 @@
+const {nextui} = require('@nextui-org/theme');
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@nextui-org/theme/dist/components/(accordion|divider).js"
   ],
   theme: {
     container: {
@@ -11,7 +13,7 @@ export default {
         sm: '2rem',
         lg: '4rem',
         xl: '5rem',
-        '2xl': '6rem',
+        '2xl': '7rem',
       },
     },
     borderWidth: {
@@ -24,6 +26,6 @@ export default {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [nextui()],
 }
 
