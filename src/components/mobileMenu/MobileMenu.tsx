@@ -89,9 +89,9 @@ const MobileMenu: React.FC = () => {
               {subitem.submenu && (
                 <span onClick={(e) => { e.stopPropagation(); handleSubmenuToggle(mainKey, subitem.key); }} className="cursor-pointer">
                   {openSubmenus.get(mainKey) === subitem.key ? (
-                    <LuMinus size={12} />
+                    <LuMinus size={13} />
                   ) : (
-                    <LuChevronDown size={12} />
+                    <LuChevronDown size={13} />
                   )}
                 </span>
               )}
@@ -108,7 +108,7 @@ const MobileMenu: React.FC = () => {
       <button className="border py-2 px-4 rounded-md" onClick={handleMenuToggle}>
         <LuMenu size={24} />
       </button>
-      <div className={`fixed top-[86px] sm:top-[98px] left-0 w-full h-fit pb-2 bg-white z-10 transition-transform duration-300 ${isOpen ? "translate-y-0" : "-translate-y-[500px]"}`}>
+      <div  style={{zIndex:-1}} className={`fixed top-[86px] z-0 bg-white sm:top-[98px] left-0 w-full h-fit pb-2  transition-transform duration-700 ${isOpen ? "translate-y-0" : "-translate-y-[500px]"}`}>
         <ul className="p-4">
           {menuData.map((item) => (
             <li key={item.key} className="py-2 cursor-pointer">
@@ -117,9 +117,9 @@ const MobileMenu: React.FC = () => {
                 {item.submenu && (
                   <span onClick={(e) => { e.stopPropagation(); handleMainMenuToggle(item.key); }} className="cursor-pointer">
                     {openMainMenu === item.key ? (
-                      <LuMinus size={12} />
+                      <LuMinus size={13} />
                     ) : (
-                      <LuPlus size={12} />
+                      <LuPlus size={13} />
                     )}
                   </span>
                 )}

@@ -53,7 +53,7 @@ const Navbar = () => {
     ];
 
     return (
-        <div className="flex justify-between items-center  py-[20px] container mx-auto fm-lato text-sm text-[#333333] font-normal relative z-999 ">
+        <div className="flex justify-between items-center  py-[20px] container mx-auto fm-lato text-sm text-[#333333] font-normal ">
             <div>
                 <img
                     src="https://windmillimmigration.ca/wp-content/uploads/2022/09/wis-logo-new.svg"

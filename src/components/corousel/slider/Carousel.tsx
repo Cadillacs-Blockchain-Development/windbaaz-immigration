@@ -23,6 +23,9 @@ const images = [
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [currentX, setCurrentX] = useState(0);
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
@@ -32,8 +35,41 @@ const Carousel = () => {
     setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, images.length - 1));
   };
 
+  const handleMouseDown = (e:any) => {
+    setIsDragging(true);
+    setStartX(e.pageX - e.currentTarget.offsetLeft);
+  };
+
+  const handleMouseMove = (e:any) => {
+    if (!isDragging) return;
+    setCurrentX(e.pageX - e.currentTarget.offsetLeft);
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    
+    if (currentX - startX > 50) {
+      handlePrev();
+    } else if (currentX - startX < -50) {
+      handleNext();
+    }
+
+    setCurrentX(0);
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) handleMouseUp();
+  };
+
   return (
-    <div className={styles.carouselWrapper}>
+    <div
+      className={styles.carouselWrapper}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className={styles.carousel}>
         <div
           className={styles.carouselInner}
@@ -72,17 +108,16 @@ const Carousel = () => {
           className={`${styles.owlNavButton} ${styles.owlPrev}`}
           onClick={handlePrev}
           disabled={currentIndex === 0}
-          style={(currentIndex==0?{background:"white"}:{backgroundColor:"none"})}
+          style={currentIndex === 0 ? { background: 'white' } : { backgroundColor: 'none' }}
         >
-        
+          {/* Previous button content */}
         </button>
         <button
           type="button"
-          className={`${styles.owlNavButton} ${styles.owlNext} `}
+          className={`${styles.owlNavButton} ${styles.owlNext}`}
           onClick={handleNext}
           disabled={currentIndex === images.length - 1}
-          style={(currentIndex==1?{background:"white"}:{backgroundColor:"none"})}
-
+          style={currentIndex === images.length - 1 ? { background: 'white' } : { backgroundColor: 'none' }}
         >
         </button>
       </div>
