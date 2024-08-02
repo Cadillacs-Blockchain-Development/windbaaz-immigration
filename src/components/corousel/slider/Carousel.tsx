@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './Carousel.module.css';
 
 const images = [
@@ -72,7 +72,7 @@ const Carousel = () => {
           className={`${styles.owlNavButton} ${styles.owlPrev}`}
           onClick={handlePrev}
           disabled={currentIndex === 0}
-          style={(currentIndex==0?{background:"lightgray"}:{backgroundColor:"none"})}
+          style={(currentIndex==0?{background:"white"}:{backgroundColor:"none"})}
         >
         
         </button>

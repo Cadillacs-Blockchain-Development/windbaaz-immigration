@@ -1,91 +1,55 @@
-import React, { useEffect, useState } from "react";
-import { MdPhone } from "react-icons/md";
-import { RiArrowDropDownLine } from "react-icons/ri";
+import { useState } from "react";
+import { MdKeyboardArrowDown, MdPhone } from "react-icons/md";
+import { RiArrowDownSLine, RiArrowDropDownLine } from "react-icons/ri";
 import OnHoverCards from "./cards/OnHoverCards";
 import MobileMenu from "./mobileMenu/MobileMenu";
 
 const Navbar = () => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
- 
     const navLinks = [
         {
             title: "Immigrate",
-            url: "#",
-            icon: <RiArrowDropDownLine />,
+            url: "https://windmillimmigration.ca/immigrate/",
+            icon: <MdKeyboardArrowDown size={18} />,
             dropdownCardData: [
                 {
                     title: "Express Entry",
-                    url: "#",
+                    url: "https://windmillimmigration.ca/immigrate/express-entry/",
+                    submenu: [
+                        { title: "Federal Skilled Worker Program", url: "https://windmillimmigration.ca/immigrate/federal-skilled-worker-program/" },
+                        { title: "Canadian Experience Class", url: "https://windmillimmigration.ca/immigrate/canadian-experience-class/" },
+                    ],
+                    icon: <RiArrowDropDownLine />,
                 },
-                {
-                    title: "Atlantic Immigration Plan",
-                    url: "#",
-                },
-                {
-                    title: "Caregiver Program",
-                    url: "#",
-                },
-                {
-                    title: "Provincial Nominee Program",
-                    url: "#",
-                }
-            ]
+                { title: "Atlantic Immigration Plan", url: "https://windmillimmigration.ca/immigrate/atlantic-immigration-program/" },
+                { title: "Caregiver Program", url: "https://windmillimmigration.ca/immigrate/caregiver-program/" },
+                { title: "Provincial Nominee Program", url: "https://windmillimmigration.ca/immigrate/provincial-nominee-programs/" },
+            ],
         },
         {
             title: "Work",
-            url: "#",
-            icon: <RiArrowDropDownLine />,
+            url: "https://windmillimmigration.ca/work/",
+            icon: <MdKeyboardArrowDown />,
             dropdownCardData: [
-                {
-                    title: "Open work permit",
-                    url: "#",
-                },
-                {
-                    title: "Post Graduation Work Permit",
-                    url: "#",
-                },
-                {
-                    title: "LMIA Owner/Operator work permit",
-                    url: "#",
-                },
-                {
-                    title: "NFTA - Work Permit",
-                    url: "#",
-                }
-            ]
+                { title: "Open work permit", url: "https://windmillimmigration.ca/work/open-work-permit/" },
+                { title: "Post Graduation Work Permit", url: "https://windmillimmigration.ca/sub-pgwp/" },
+                { title: "LMIA Owner/Operator work permit", url: "https://windmillimmigration.ca/lmia-owner-operator-work-permit/" },
+                { title: "NAFTA - Work Permit", url: "https://windmillimmigration.ca/work/nafta-work-permit/" },
+            ],
         },
-        {
-            title: "Study in Canada",
-            url: "#",
-        },
-        {
-            title: "Citizenship",
-            url: "#",
-        },
+        { title: "Study in Canada", url: "https://windmillimmigration.ca/study/" },
+        { title: "Citizenship", url: "https://windmillimmigration.ca/citizenship/" },
         {
             title: "Temporary Visa",
-            url: "#",
-            icon: <RiArrowDropDownLine />,
+            url: "https://windmillimmigration.ca/trv/",
+            icon: <MdKeyboardArrowDown />,
             dropdownCardData: [
-                {
-                    title: "Visitor Visa",
-                    url: "#",
-                },
-                {
-                    title: "Super Visa",
-                    url: "#",
-                },
-            ]
+                { title: "Visitor Visa", url: "https://windmillimmigration.ca/temporary-resident-visa/" },
+                { title: "Super Visa", url: "https://windmillimmigration.ca/trv/super-visa/" },
+            ],
         },
-        {
-            title: "Business",
-            url: "#",
-        },
-        {
-            title: "Free Assessment",
-            url: "https://windmillimmigration.ca/free-assessment/",
-            style:"assignmentBtn"
-        },
+        { title: "Business", url: "https://windmillimmigration.ca/business/" },
+        { title: "Free Assessment", url: "https://windmillimmigration.ca/free-assessment/", style: "assignmentBtn" },
     ];
 
     return (
@@ -97,8 +61,8 @@ const Navbar = () => {
                     className="w-[80%] sm:w-auto"
                 />
             </div>
-      
-             <div className=" hidden lg:block">
+
+            <div className=" hidden lg:block">
                 <div className="flex items-center justify-end space-x-2">
                     <span>Home</span>
                     <span className="mx-2">|</span>
@@ -113,20 +77,20 @@ const Navbar = () => {
                         {navLinks.map((link, index) => (
                             <li
                                 key={index}
-                                className={`flex items-center relative ${link.style?"bg-[#cc210a] text-white px-8 py-3 hover:opacity-75 transition-all cursor-pointer":""} `}
-                                
+                                className={`flex items-center relative ${link.style ? "bg-[#cc210a] text-white px-8 py-3 hover:opacity-75 transition-all cursor-pointer" : ""} `}
+
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}
                             >
                                 <a
                                     href={link.url}
-                                    className={` hover:text-[#cc210a] text-[15px] font-normal ${link.style?"text-white hover:text-white":"text-[#333333]"}` }
+                                    className={` hover:text-[#cc210a] text-[15px] font-normal ${link.style ? "text-white hover:text-white" : "text-[#333333]"}`}
                                     style={{ display: "flex", alignItems: "center" }}
                                 >
                                     {link.title}
                                 </a>
                                 {link.icon && (
-                                    <RiArrowDropDownLine
+                                    <RiArrowDownSLine size={18}
                                         color={hoveredIndex === index ? "#cc210a" : "black"}
                                     />
                                 )}
@@ -144,12 +108,12 @@ const Navbar = () => {
                             </li>
                         ))}
                     </ul>
-                     {/* <PrimaryBtn title="Free Assessment" />  */}
+                    {/* <PrimaryBtn title="Free Assessment" />  */}
                 </div>
             </div>
             <div className="block lg:hidden">
                 <MobileMenu />
-    </div>
+            </div>
         </div>
     );
 };

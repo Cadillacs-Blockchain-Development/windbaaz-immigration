@@ -1,4 +1,3 @@
-import React from 'react';
 import Rcc from "../../assets/images/RCIC_EN_IMAGES.jpg"
 import bgImage from "../../assets/images/Boat.webp"
 import { IoMdCheckmark } from "react-icons/io";

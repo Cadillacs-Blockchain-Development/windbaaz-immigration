@@ -55,17 +55,31 @@ const menuData: MenuItem[] = [
 
 const MobileMenu: React.FC = () => {
   const [isOpen, setOpen] = useState(false);
-  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const [openMainMenu, setOpenMainMenu] = useState<string | null>(null);
+  const [openSubmenus, setOpenSubmenus] = useState<Map<string, string | null>>(new Map());
 
-  const handleSubmenuToggle = (key: string) => {
-    setOpenSubmenu(prev => (prev === key ? null : key)); 
+  const handleMainMenuToggle = (key: string) => {
+    setOpenMainMenu(prev => (prev === key ? null : key));
+  };
+
+  const handleSubmenuToggle = (mainKey: string, subKey: string) => {
+    setOpenSubmenus(prev => {
+      const newSubmenus = new Map(prev);
+      const currentOpenSubmenu = newSubmenus.get(mainKey);
+      newSubmenus.set(mainKey, currentOpenSubmenu === subKey ? null : subKey);
+      return newSubmenus;
+    });
   };
 
   const handleMenuToggle = () => {
     setOpen(prev => !prev);
+    if (isOpen) {
+      setOpenMainMenu(null);
+      setOpenSubmenus(new Map());
+    }
   };
 
-  const renderSubmenu = (submenu: MenuItem[]) => {
+  const renderSubmenu = (submenu: MenuItem[], mainKey: string) => {
     return (
       <ul className="pl-4 border-t border-gray-200 py-1 mt-2">
         {submenu.map((subitem) => (
@@ -73,8 +87,8 @@ const MobileMenu: React.FC = () => {
             <div className="flex justify-between items-center">
               <a href={subitem.link}>{subitem.label}</a>
               {subitem.submenu && (
-                <span onClick={(e) => { e.stopPropagation(); handleSubmenuToggle(subitem.key); }} className="cursor-pointer">
-                  {openSubmenu === subitem.key ? (
+                <span onClick={(e) => { e.stopPropagation(); handleSubmenuToggle(mainKey, subitem.key); }} className="cursor-pointer">
+                  {openSubmenus.get(mainKey) === subitem.key ? (
                     <LuMinus size={12} />
                   ) : (
                     <LuChevronDown size={12} />
@@ -82,7 +96,7 @@ const MobileMenu: React.FC = () => {
                 </span>
               )}
             </div>
-            {subitem.submenu && openSubmenu === subitem.key && renderSubmenu(subitem.submenu)}
+            {subitem.submenu && openSubmenus.get(mainKey) === subitem.key && renderSubmenu(subitem.submenu, mainKey)}
           </li>
         ))}
       </ul>
@@ -101,8 +115,8 @@ const MobileMenu: React.FC = () => {
               <div className="flex justify-between items-center">
                 <a href={item.link}>{item.label}</a>
                 {item.submenu && (
-                  <span onClick={(e) => { e.stopPropagation(); handleSubmenuToggle(item.key); }} className="cursor-pointer">
-                    {openSubmenu === item.key ? (
+                  <span onClick={(e) => { e.stopPropagation(); handleMainMenuToggle(item.key); }} className="cursor-pointer">
+                    {openMainMenu === item.key ? (
                       <LuMinus size={12} />
                     ) : (
                       <LuPlus size={12} />
@@ -110,7 +124,7 @@ const MobileMenu: React.FC = () => {
                   </span>
                 )}
               </div>
-              {item.submenu && openSubmenu === item.key && renderSubmenu(item.submenu)}
+              {item.submenu && openMainMenu === item.key && renderSubmenu(item.submenu, item.key)}
             </li>
           ))}
         </ul>
