@@ -26,6 +26,7 @@ const Carousel = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [currentX, setCurrentX] = useState(0);
+  const [cursorType, setCursorType] = useState("default")
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
@@ -36,16 +37,21 @@ const Carousel = () => {
   };
 
   const handleMouseDown = (e:any) => {
+    setCursorType("grab");
+
     setIsDragging(true);
     setStartX(e.pageX - e.currentTarget.offsetLeft);
   };
 
   const handleMouseMove = (e:any) => {
+
     if (!isDragging) return;
     setCurrentX(e.pageX - e.currentTarget.offsetLeft);
   };
 
   const handleMouseUp = () => {
+    setCursorType("default");
+
     if (!isDragging) return;
     setIsDragging(false);
     
@@ -64,16 +70,17 @@ const Carousel = () => {
 
   return (
     <div
-      className={styles.carouselWrapper}
+      className={styles.carouselWrapper }
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseLeave}
+
     >
       <div className={styles.carousel}>
         <div
-          className={styles.carouselInner}
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          className={`${styles.carouselInner}`}
+          style={{ transform: `translateX(-${currentIndex * 100}%) ` ,cursor:cursorType }}
         >
           {images.map((image, index) => (
             <div key={index} className={styles.carouselItem}>

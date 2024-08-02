@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       {/* Navbar Section */}
-      <div className="sticky top-0 z-30 bg-white ">
+      <div className="sticky top-0 z-[99999] bg-white ">
         <Navbar />
       </div>
 
